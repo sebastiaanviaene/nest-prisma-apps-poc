@@ -1,8 +1,50 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/nest-prisma-poc/src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/nest-prisma-poc/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/nest-prisma-poc",
+  "projects": {
+    "nest-prisma-poc": {
+      "type": "application",
+      "root": "apps/nest-prisma-poc",
+      "entryFile": "main",
+      "sourceRoot": "apps/nest-prisma-poc/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/nest-prisma-poc/tsconfig.app.json"
+      }
+    },
+    "my-app": {
+      "type": "application",
+      "root": "apps/my-app",
+      "entryFile": "main",
+      "sourceRoot": "apps/my-app/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/my-app/tsconfig.app.json"
+      }
+    },
+    "my-app2": {
+      "type": "application",
+      "root": "apps/my-app2",
+      "entryFile": "main",
+      "sourceRoot": "apps/my-app2/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/my-app2/tsconfig.app.json"
+      }
+    },
+    "shared-app": {
+      "type": "library",
+      "root": "libs/shared-app",
+      "entryFile": "index",
+      "sourceRoot": "libs/shared-app/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/shared-app/tsconfig.lib.json"
+      }
+    }
   }
 }

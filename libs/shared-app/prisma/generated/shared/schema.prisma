@@ -1,0 +1,17 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/shared"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DB3_URL")
+}
+
+model Shared {
+  id    Int     @id @default(autoincrement())
+  description String
+}
